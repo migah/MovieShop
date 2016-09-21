@@ -11,7 +11,7 @@ namespace MovieShopDll.Entities
         public string ImageUrl { get; set; }
         public string TrailerUrl { get; set; }
         public Genre Genre { get; set; }
-        public List<Ordre> Orders { get; set; }
+        public List<Order> Orders { get; set; }
 
 
     }

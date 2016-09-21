@@ -9,11 +9,11 @@ namespace MovieShopDll.Entities
 {
     public class Customer
     {
-        public int CustomerNumber { get; set; }
+        public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public Address Address { get; set; }
         public string Email { get; set; }
-        public List<Ordre> Orders { get; set; }       
+        public List<Order> Orders { get; set; }       
     }
 }

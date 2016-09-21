@@ -3,12 +3,11 @@ using System.Collections.Generic;
 
 namespace MovieShopDll.Entities
 {
-    public class Ordre
+    public class Order
     {
-        public int OrdreNumber { get; set; }
+        public int Id { get; set; }
         public DateTime Date { get; set; }
         public Customer Customer { get; set; }
         public List<Movie> Movies { get; set; }
-
     }
 }
