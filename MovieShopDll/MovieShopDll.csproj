@@ -57,7 +57,11 @@
     <Compile Include="Entities\Order.cs" />
     <Compile Include="IManager.cs" />
     <Compile Include="DllFacade.cs" />
+    <Compile Include="Manager\AddressManager.cs" />
+    <Compile Include="Manager\CustomerManager.cs" />
     <Compile Include="Manager\GenreManager.cs" />
+    <Compile Include="Manager\MovieManager.cs" />
+    <Compile Include="Manager\OrderManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
