@@ -24,7 +24,7 @@ namespace MovieShopDll.Manager
         {
             using (var db = new MovieShopContext())
             {
-                return db.Customers.FirstOrDefault(x => x.Id == id);
+                return db.Customers.Include("Address").FirstOrDefault(x => x.Id == id);
             }
         }
 
@@ -32,7 +32,7 @@ namespace MovieShopDll.Manager
         {
             using (var db = new MovieShopContext())
             {
-                return db.Customers.ToList();
+                return db.Customers.Include("Address").ToList();
             }
         }
 

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using MovieShopAdmin.Models;
 using MovieShopDll.Contexts;
 using MovieShopDll.Entities;
 
@@ -39,7 +40,12 @@ namespace MovieShopAdmin.Controllers
         // GET: Movies/Create
         public ActionResult Create()
         {
-            return View();
+            var addMovieViewModel = new AddMovieViewModel
+            {
+                Genres = db.Genres.ToList(),
+
+            };
+            return View(addMovieViewModel);
         }
 
         // POST: Movies/Create
@@ -49,6 +55,7 @@ namespace MovieShopAdmin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Title,Year,Price,ImageUrl,TrailerUrl")] Movie movie)
         {
+            
             if (ModelState.IsValid)
             {
                 db.Movies.Add(movie);

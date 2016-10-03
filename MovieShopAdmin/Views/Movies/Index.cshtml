@@ -1,14 +1,15 @@
 ﻿@model IEnumerable<MovieShopDll.Entities.Movie>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "All movies";
 }
 
-<h2>Index</h2>
+<h2>All movies</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
+<p class="btn btn-default">
+    @Html.ActionLink("Add new movie", "Create")
 </p>
+<br><br />
 <table class="table">
     <tr>
         <th>

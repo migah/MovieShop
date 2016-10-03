@@ -47,7 +47,7 @@ namespace MovieShopAdmin.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,FirstName,LastName,Email")] Customer customer)
+        public ActionResult Create([Bind(Include = "Id,FirstName,LastName,Email, Address ")] Customer customer)
         {
             if (ModelState.IsValid)
             {
