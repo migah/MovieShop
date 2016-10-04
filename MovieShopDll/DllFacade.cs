@@ -9,5 +9,10 @@ namespace MovieShopDll
         {
             return new GenreManager();
         }
+
+        public IManager<Movie> GetMovieManager()
+        {
+            return new MovieManager();
+        }
     }
 }

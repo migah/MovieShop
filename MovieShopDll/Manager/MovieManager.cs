@@ -10,6 +10,7 @@ namespace MovieShopDll.Manager
 {
     class MovieManager : IManager<Movie>
     {
+
         public Movie Create(Movie t)
         {
             using (var db = new MovieShopContext())
