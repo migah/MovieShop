@@ -6,8 +6,6 @@
 
 <h2>All movies</h2>
 
-
-<br><br />
 <table class="table">
    
 
@@ -19,9 +17,10 @@
             <img src="@Html.DisplayFor(modelItem => item.ImageUrl)" />
             <div class="caption">
                 <h3>@Html.DisplayFor(modelItem => item.Title)</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                <p>Genre:@Html.DisplayFor(modelItem => item.Genre)</p>
+                <p>Pris:@Html.DisplayFor(modelItem => item.Price)</p>
                 <p>
-                    <a href="#" class="btn btn-primary">Buy Now!</a> <a href="#" class="btn btn-default">Trailer</a>
+                    <a href="#" class="btn btn-primary">Buy Now!</a> <a href="@Html.DisplayFor(modelItem => item.TrailerUrl)" target="_blank" class="btn btn-default">Trailer</a>
                 </p>
             </div>
         </div>
