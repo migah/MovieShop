@@ -64,7 +64,7 @@ namespace MovieShopAdmin.Controllers
                 public
             ActionResult Create 
             ([
-            Bind(Include = "Id,Title,Year,Price,ImageUrl,TrailerUrl")]
+            Bind(Include = "Id,Title,Year,Price,ImageUrl,TrailerUrl, Genre")]
             Movie movie)
             {
                 if (ModelState.IsValid)

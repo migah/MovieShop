@@ -15,6 +15,8 @@ namespace MovieShopDll.Manager
         {
             using (var db = new MovieShopContext())
             {
+                t.Genre = db.Genres.FirstOrDefault(x => x.Id == t.Genre.Id);
+
                 db.Movies.Add(t);
                 db.SaveChanges();
                 return t;
