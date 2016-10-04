@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -50,8 +51,14 @@ namespace MovieShopDll.Manager
         {
             using (var db = new MovieShopContext())
             {
-                db.Entry(t).State = System.Data.Entity.EntityState.Modified;
+                var foundCustomer = db.Customers.Include(x => x.Address).FirstOrDefault(x => x.Id == t.Id);
+
+                db.Entry(foundCustomer).CurrentValues.SetValues(t);
+                foundCustomer.Address = t.Address;
+               // db.Entry(t).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
+
+               
                 return t;
             }
         }

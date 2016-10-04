@@ -14,5 +14,10 @@ namespace MovieShopDll
         {
             return new MovieManager();
         }
+
+        public IManager<Customer> GetCustomerManager()
+        {
+            return new CustomerManager();
+        }
     }
 }
