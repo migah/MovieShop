@@ -5,12 +5,13 @@
     ViewBag.Title = "All genres";
 }
 
-<h2>Index</h2>
+<h2>All genres</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
+<p class="btn btn-default">
+
+    @Html.ActionLink("Add new genre", "Create")
 </p>
-
+<br><br/>
 <div class="container">
     <div class="row">
         <div class="col-md-12">
@@ -29,12 +30,8 @@
                             <p></p>
                         </td>
                         <td>
-                            <img src="http://pingendo.github.io/pingendo-bootstrap/assets/user_placeholder.png" class="img-circle" width="60">
-                        </td>
-                        <td>
                             <div class="btn-group">
                                 @Html.ActionLink("Edit", "Edit", new { id = item.Id}, new { @class = "btn btn-default"})
-                                @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "btn btn-default"})
                                 @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new {@class= "btn btn-default"})
                             </div>
                         </td>

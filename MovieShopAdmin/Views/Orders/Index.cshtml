@@ -4,13 +4,18 @@
     ViewBag.Title = "All orders";
 }
 
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<h2>All orders</h2>
 <table class="table">
     <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Customer.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Customer.LastName)
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.Date)
         </th>
@@ -19,6 +24,15 @@
 
 @foreach (var item in Model) {
     <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Customer.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Customer.LastName)
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.Date)
         </td>
