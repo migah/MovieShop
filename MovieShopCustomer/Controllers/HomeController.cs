@@ -31,16 +31,6 @@ namespace MovieShopCustomer.Controllers
             return View(movie);
         }
 
-        // GET: Movies/Create
-        public ActionResult Create()
-        {
-            /* var addMovieViewModel = new AddMovieViewModel
-             {
-                 Genres = genreManager.Read()
-
-             };*/
-            return View();
-        }
 
         // POST: Movies/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
