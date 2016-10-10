@@ -13,23 +13,18 @@ namespace MovieShopAdmin.Controllers
     public class HomeController : Controller
     {
         // private MovieShopContext db = new MovieShopContext();
-        private readonly
-        IManager<Movie> movieManager = new DllFacade().GetMovieManager();
-        private readonly
-    IManager<Genre> genreManager = new DllFacade().GetGenreManager();
+        private readonly IManager<Movie> movieManager = new DllFacade().GetMovieManager();
+        private readonly IManager<Genre> genreManager = new DllFacade().GetGenreManager();
 
         // GET: Movies
-        public
-    ActionResult Index
-    ()
+        public ActionResult Index()
         {
             var movies = movieManager.Read();
             return View(movieManager.Read());
         }
 
         // GET: Movies/Details/5
-        public
-        ActionResult Details
+        public ActionResult Details
         (int
         id)
         {
@@ -58,15 +53,10 @@ namespace MovieShopAdmin.Controllers
         // POST: Movies/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [
-        HttpPostAttribute]
-        [
-        ValidateAntiForgeryTokenAttribute]
-        public
-        ActionResult Create
-        ([
-        Bind(Include = "Id,Title,Year,Price,ImageUrl,TrailerUrl, Genre")]
-            Movie movie)
+        [HttpPostAttribute]
+        [ValidateAntiForgeryTokenAttribute]
+        public ActionResult Create
+        ([Bind(Include = "Id,Title,Year,Price,ImageUrl,TrailerUrl, Genre")] Movie movie)
         {
             if (ModelState.IsValid)
             {
@@ -83,14 +73,9 @@ namespace MovieShopAdmin.Controllers
         }
 
         // GET: Movies/Edit/5
-        public
-            ActionResult Edit
-            (int
-                id)
+        public ActionResult Edit(int id)
         {
-
             var movie = movieManager.Read(id);
-
             var addMovieViewModel = new AddMovieViewModel
             {
                 Genres = genreManager.Read(),
@@ -103,15 +88,10 @@ namespace MovieShopAdmin.Controllers
         // POST: Movies/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [
-        HttpPostAttribute]
-        [
-        ValidateAntiForgeryTokenAttribute]
-        public
-        ActionResult Edit
-        ([
-        Bind(Include = "Id,Title,Year,Price,ImageUrl,TrailerUrl,GenreId")]
-            Movie movie)
+        [HttpPostAttribute]
+        [ValidateAntiForgeryTokenAttribute]
+        public ActionResult Edit
+        ([Bind(Include = "Id,Title,Year,Price,ImageUrl,TrailerUrl,GenreId")]Movie movie)
         {
             if (ModelState.IsValid)
             {
@@ -128,10 +108,8 @@ namespace MovieShopAdmin.Controllers
         }
 
         // GET: Movies/Delete/5
-        public
-        ActionResult Delete
-        (int
-        id)
+        public ActionResult Delete
+        (int id)
         {
             var movie = movieManager.Read(id);
 
@@ -143,18 +121,11 @@ namespace MovieShopAdmin.Controllers
         }
 
         // POST: Movies/Delete/5
-        [
-        HttpPostAttribute,
-        ActionName("Delete")]
-        [
-        ValidateAntiForgeryTokenAttribute]
-        public
-        ActionResult DeleteConfirmed
-        (int
-        id)
+        [HttpPostAttribute,ActionName("Delete")]
+        [ValidateAntiForgeryTokenAttribute]
+        public ActionResult DeleteConfirmed(int id)
         {
             movieManager.Delete(id);
-
             return RedirectToAction("Index");
         }
 
