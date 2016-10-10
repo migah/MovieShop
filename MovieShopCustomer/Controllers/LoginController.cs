@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using MovieShopCustomer.Models;
 using MovieShopDll;
 using MovieShopDll.Entities;
 
@@ -45,21 +46,21 @@ namespace MovieShopCustomer.Controllers
         }
 
         [ActionName("check")]
-        public ActionResult CheckUser(String username)
+        public ActionResult CheckUser(String email)
         {
             if (ModelState.IsValid)
             {
-                var test = username;
-
+            
                 var customers = customerManager.Read();
 
-                var customer = customers.FirstOrDefault(x => x.FirstName == username);
+                var customer = customers.FirstOrDefault(x => x.Email == email);
 
                 if (customer != null)
                 {
-                    return RedirectToAction("../Checkout");
+                   
+                   
+                    return RedirectToAction("Index", "Checkout", new {cId = customer.Id, mId = 1});
                 } 
-                //customerManager.Create(customer);
 
                 return RedirectToAction("Index");
             }
