@@ -12,7 +12,7 @@ namespace MovieShopDll.Contexts
     {
         public MovieShopContext() : base()
         {
-            
+
         }
 
         public DbSet<Genre> Genres { get; set; }
