@@ -38,6 +38,7 @@ namespace MovieShopCustomer.Controllers
             {
                 return HttpNotFound();
             }
+            
             return View(movie);
         }
 
@@ -128,6 +129,11 @@ namespace MovieShopCustomer.Controllers
             movieManager.Delete(id);
 
             return RedirectToAction("Index");
+        }
+
+        public ActionResult BuyMovie(int id)
+        {
+            return RedirectToAction("Index", "Login", new { movieId = id });
         }
 
     }

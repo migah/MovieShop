@@ -59,9 +59,19 @@
                             <h4 class="text-right">Total <strong>@Model.Movie.Price kr.</strong></h4>
                         </div>
                         <div class="col-xs-3">
-                            <button type="button" class="btn btn-success btn-block">
-                                Checkout
-                            </button>
+                            
+                            @using (Html.BeginForm("confirm", "Checkout"))
+                            {
+                                @Html.AntiForgeryToken()
+                                <input type="hidden" name="movieId" value="@Model.Movie.Id">
+                                <input type="hidden" name="customerId" value="@Model.Customer.Id">
+
+
+                                <br />
+                                <input class="btn btn-success btn-block" type="submit" name="login" value="Checkout">
+                                <br>
+                            }
+
                         </div>
                     </div>
                 </div>

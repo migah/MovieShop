@@ -12,13 +12,27 @@ namespace MovieShopCustomer.Controllers
     public class LoginController : Controller
     {
         private readonly IManager<Customer> customerManager = new DllFacade().GetCustomerManager();
+        private readonly IManager<Movie> movieManager = new DllFacade().GetMovieManager();
 
+        private int _selectedMovie = 0;
         // GET: Checkout
-        public ActionResult Index()
+        public ActionResult Index(int movieId)
         {
+            var model = new CustomerMovieView()
+            {
+                Movie = movieManager.Read(movieId),
+                Customer = new Customer()
+            }
+            ;
+            
+            
+            return View(model);
+            
             //return RedirectToAction("Create");
-            return View();
+           // return View();
         }
+
+       
 
         // GET: Customers/Create
         public ActionResult Create()
@@ -31,13 +45,15 @@ namespace MovieShopCustomer.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,FirstName,LastName,Email, Address ")] Customer customer)
+        public ActionResult Create([Bind(Include = "Id,FirstName,LastName,Email, Address ")] Customer customer, int movieId)
         {
             if (ModelState.IsValid)
             {
-                customerManager.Create(customer);
+                var newCustomer = customerManager.Create(customer);
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Checkout", new { cId = newCustomer.Id, mId = movieId });
+
+                //return RedirectToAction("Index");
             }
 
             return View(customer);
@@ -46,20 +62,17 @@ namespace MovieShopCustomer.Controllers
         }
 
         [ActionName("check")]
-        public ActionResult CheckUser(String email)
+        public ActionResult CheckUser(String email, int movieId)
         {
             if (ModelState.IsValid)
             {
-            
                 var customers = customerManager.Read();
 
                 var customer = customers.FirstOrDefault(x => x.Email == email);
 
                 if (customer != null)
                 {
-                   
-                   
-                    return RedirectToAction("Index", "Checkout", new {cId = customer.Id, mId = 1});
+                    return RedirectToAction("Index", "Checkout", new {cId = customer.Id, mId = movieId});
                 } 
 
                 return RedirectToAction("Index");

@@ -9,26 +9,24 @@ using MovieShopDll.Entities;
 
 namespace MovieShopCustomer.Controllers
 {
-    public class CheckoutController : Controller
+    public class ConfirmationController : Controller
     {
+
         IManager<Customer> _cm = new DllFacade().GetCustomerManager();
         IManager<Movie> _mm = new DllFacade().GetMovieManager();
+        
 
-        public ActionResult Index(int cId, int mId)
+        // GET: Confirmation
+        public ActionResult Index(int mId, int cId)
         {
             var model = new CustomerMovieView()
             {
                 Customer = _cm.Read(cId),
                 Movie = _mm.Read(mId)
-            
+
             };
+
             return View(model);
-        }
-
-        public ActionResult Confirm(int customerId, int movieId)
-        {
-            return RedirectToAction("Index", "Confirmation", new { cId = customerId, mId = movieId });
-
         }
     }
 }
