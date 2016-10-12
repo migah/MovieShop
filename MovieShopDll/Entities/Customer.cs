@@ -10,7 +10,7 @@ namespace MovieShopDll.Entities
 {
     public class Customer
     {
-        public int Id { get; set; }
+        public int CustomerId { get; set; }
 
         [Display(Name = "First Name")]
         public string FirstName { get; set; }

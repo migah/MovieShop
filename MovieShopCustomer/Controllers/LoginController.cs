@@ -14,7 +14,7 @@ namespace MovieShopCustomer.Controllers
         private readonly IManager<Customer> customerManager = new DllFacade().GetCustomerManager();
         private readonly IManager<Movie> movieManager = new DllFacade().GetMovieManager();
 
-        private int _selectedMovie = 0;
+
         // GET: Checkout
         public ActionResult Index(int movieId)
         {
@@ -22,15 +22,11 @@ namespace MovieShopCustomer.Controllers
             {
                 Movie = movieManager.Read(movieId),
                 Customer = new Customer()
-            }
-            ;
-            
+            };
             
             return View(model);
-            
-            //return RedirectToAction("Create");
-           // return View();
         }
+
 
        
 
@@ -51,7 +47,7 @@ namespace MovieShopCustomer.Controllers
             {
                 var newCustomer = customerManager.Create(customer);
 
-                return RedirectToAction("Index", "Checkout", new { cId = newCustomer.Id, mId = movieId });
+                return RedirectToAction("Index", "Checkout", new { cId = newCustomer.CustomerId, mId = movieId });
 
                 //return RedirectToAction("Index");
             }
@@ -72,13 +68,12 @@ namespace MovieShopCustomer.Controllers
 
                 if (customer != null)
                 {
-                    return RedirectToAction("Index", "Checkout", new {cId = customer.Id, mId = movieId});
-                } 
+                    return RedirectToAction("Index", "Checkout", new {cId = customer.CustomerId, mId = movieId});
+                }
 
-                return RedirectToAction("Index");
             }
+            return RedirectToAction("Index");
 
-            return View();
         }
 
     }

@@ -40,7 +40,7 @@ namespace MovieShopDll.Manager
         {
             using (var db = new MovieShopContext())
             {
-                var addressTodelete = db.Movies.FirstOrDefault(x => x.Id == id);
+                var addressTodelete = db.Movies.FirstOrDefault(x => x.MovieId == id);
                 db.Entry(addressTodelete).State = System.Data.Entity.EntityState.Deleted;
                 db.SaveChanges();
             }

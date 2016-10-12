@@ -49,7 +49,7 @@ namespace MovieShopCustomer.Controllers
 
             foreach (var movie in movieManager.Read())
             {
-                if (movie.Genre.Id == genreId)
+                if (movie.Genre.GenreId == genreId)
                 {
                     movies.Add(movie);
                 }

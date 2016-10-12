@@ -17,8 +17,10 @@ namespace MovieShopCustomer.Controllers
         
 
         // GET: Confirmation
-        public ActionResult Index(int mId, int cId)
+        public ActionResult Index(int mId, int cId, int oId)
         {
+
+
             var model = new CustomerMovieView()
             {
                 Customer = _cm.Read(cId),

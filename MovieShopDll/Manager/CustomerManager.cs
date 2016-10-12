@@ -25,7 +25,7 @@ namespace MovieShopDll.Manager
         {
             using (var db = new MovieShopContext())
             {
-                return db.Customers.Include("Address").FirstOrDefault(x => x.Id == id);
+                return db.Customers.Include("Address").FirstOrDefault(x => x.CustomerId == id);
             }
         }
 
@@ -41,7 +41,7 @@ namespace MovieShopDll.Manager
         {
             using (var db = new MovieShopContext())
             {
-                var customerTodelete = db.Movies.FirstOrDefault(x => x.Id == id);
+                var customerTodelete = db.Movies.FirstOrDefault(x => x.MovieId == id);
                 db.Entry(customerTodelete).State = System.Data.Entity.EntityState.Deleted;
                 db.SaveChanges();
             }
@@ -51,7 +51,7 @@ namespace MovieShopDll.Manager
         {
             using (var db = new MovieShopContext())
             {
-                var foundCustomer = db.Customers.Include(x => x.Address).FirstOrDefault(x => x.Id == t.Id);
+                var foundCustomer = db.Customers.Include(x => x.Address).FirstOrDefault(x => x.CustomerId == t.CustomerId);
 
                 db.Entry(foundCustomer).CurrentValues.SetValues(t);
                 foundCustomer.Address = t.Address;

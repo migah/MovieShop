@@ -9,7 +9,7 @@ namespace MovieShopDll.Entities
 {
     public class Genre
     {
-        public int Id { get; set; }
+        public int GenreId { get; set; }
         [Display(Name = "Genre")]
         public string Name { get; set; }
         public virtual List<Movie> Movies { get; set; }

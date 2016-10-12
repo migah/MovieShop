@@ -10,7 +10,10 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-xs-8">
+        <div class="col-xs-8" style="margin-left: 20%; margin-right: 20%">
+            
+            
+            
             <div class="panel panel-info">
                 <div class="panel-heading">
                     <div class="panel-title">
@@ -23,7 +26,7 @@
                     </div>
                 </div>
                 <div class="panel-body">
-               
+
                     <hr>
                     <div class="row">
                         <div class="col-xs-2">
@@ -59,15 +62,15 @@
                             <h4 class="text-right">Total <strong>@Model.Movie.Price kr.</strong></h4>
                         </div>
                         <div class="col-xs-3">
-                            
+
                             @using (Html.BeginForm("confirm", "Checkout"))
                             {
                                 @Html.AntiForgeryToken()
-                                <input type="hidden" name="movieId" value="@Model.Movie.Id">
-                                <input type="hidden" name="customerId" value="@Model.Customer.Id">
+                                <input type="hidden" name="movieId" value="@Model.Movie.MovieId">
+                                <input type="hidden" name="customerId" value="@Model.Customer.CustomerId">
 
 
-                                <br />
+                                <br/>
                                 <input class="btn btn-success btn-block" type="submit" name="login" value="Checkout">
                                 <br>
                             }

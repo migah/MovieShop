@@ -24,7 +24,7 @@ namespace MovieShopDll.Manager
         {
             using (var db = new MovieShopContext())
             {
-                return db.Genres.FirstOrDefault(x => x.Id == id);
+                return db.Genres.FirstOrDefault(x => x.GenreId == id);
             }
         }
 
@@ -40,7 +40,7 @@ namespace MovieShopDll.Manager
         {
             using (var db = new MovieShopContext())
             {
-                var genreTodelete = db.Genres.FirstOrDefault(x => x.Id == id);
+                var genreTodelete = db.Genres.FirstOrDefault(x => x.GenreId == id);
                 db.Entry(genreTodelete).State = System.Data.Entity.EntityState.Deleted;
                 db.SaveChanges();
             }
