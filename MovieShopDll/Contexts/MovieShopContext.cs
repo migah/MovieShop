@@ -10,7 +10,7 @@ namespace MovieShopDll.Contexts
 {
     public class MovieShopContext : DbContext
     {
-        public MovieShopContext() : base()
+        public MovieShopContext() : base("MovieShopDB")
         {
 
         }
