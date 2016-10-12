@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using MovieShopCustomer.Models;
 using MovieShopDll;
 using MovieShopDll.Entities;
 
@@ -16,7 +17,16 @@ namespace MovieShopCustomer.Controllers
         // GET: Movies
         public ActionResult Index()
         {
-            return View(movieManager.Read());
+            
+
+            var model = new MovieGenreViewModel()
+            {
+                Movies = movieManager.Read(),
+                Genres = genreManager.Read()
+
+            };
+
+            return View(model);
         }
 
         // GET: Movies/Details/5
@@ -31,6 +41,27 @@ namespace MovieShopCustomer.Controllers
             return View(movie);
         }
 
+        [ActionName("filter")]
+        public ActionResult FilterGenre(int genreId)
+        {
+            List<Movie> movies = new List<Movie>();
+
+            foreach (var movie in movieManager.Read())
+            {
+                if (movie.Genre.Id == genreId)
+                {
+                    movies.Add(movie);
+                }
+            }
+
+            var model = new MovieGenreViewModel()
+            {
+                Genres = genreManager.Read(),
+                Movies = movies
+            };
+
+            return View("~/Views/Home/Index.cshtml", model);
+        }
 
         // POST: Movies/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
