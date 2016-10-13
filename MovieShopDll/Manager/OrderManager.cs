@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,8 +13,28 @@ namespace MovieShopDll.Manager
     {
         public Order Create(Order t)
         {
+
+
             using (var db = new MovieShopContext())
             {
+
+                t.Customer = db.Customers.Include(x => x.Address).FirstOrDefault(x => x.CustomerId == t.Customer.CustomerId);
+
+                var tmpList = new List<Movie>();
+
+                foreach (var movie in db.Movies)
+                {
+                    foreach (var moviesToBuy in t.Movies)
+                    {
+                        if (movie.Title == moviesToBuy.Title) 
+                            tmpList.Add(movie);
+                    }
+                }
+
+           
+                t.Movies = tmpList;
+
+             
                 db.Orders.Add(t);
                 db.SaveChanges();
                 return t;
