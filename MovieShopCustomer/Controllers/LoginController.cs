@@ -48,8 +48,7 @@ namespace MovieShopCustomer.Controllers
                 var newCustomer = customerManager.Create(customer);
 
                 return RedirectToAction("Index", "Checkout", new { cId = newCustomer.CustomerId, mId = movieId });
-
-                //return RedirectToAction("Index");
+    
             }
 
             return View(customer);
