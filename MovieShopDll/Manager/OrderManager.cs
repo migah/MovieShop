@@ -47,7 +47,7 @@ namespace MovieShopDll.Manager
             {
                // return db.Movies.Include("Genre").FirstOrDefault(x => x.MovieId == id);
 
-                return db.Orders.Include("Customer").FirstOrDefault(x => x.OrderId == id);
+                return db.Orders.Include("Customer").Include("Movies").FirstOrDefault(x => x.OrderId == id);
             }
         }
 
