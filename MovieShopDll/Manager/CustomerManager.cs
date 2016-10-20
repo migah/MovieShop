@@ -41,7 +41,7 @@ namespace MovieShopDll.Manager
         {
             using (var db = new MovieShopContext())
             {
-                var customerTodelete = db.Movies.FirstOrDefault(x => x.MovieId == id);
+                var customerTodelete = db.Customers.FirstOrDefault(x => x.CustomerId == id);
                 db.Entry(customerTodelete).State = System.Data.Entity.EntityState.Deleted;
                 db.SaveChanges();
             }

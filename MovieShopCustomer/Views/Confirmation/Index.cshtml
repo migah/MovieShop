@@ -1,4 +1,4 @@
-﻿@model MovieShopCustomer.Models.CustomerMovieView
+﻿@model MovieShopCustomer.Models.CustomerMovieOrderModel
 
 @{
     ViewBag.Title = "Thanks for your order " + @Model.Customer.FirstName;
@@ -21,10 +21,10 @@
                 </div>
                 <div class="col-xs-6 col-sm-6 col-md-6 text-right">
                     <p>
-                        <em>Date: @DateTime.Now</em>
+                        <em>Date: @Model.Order.Date</em>
                     </p>
                     <p>
-                        <em>Receipt #: 34522677W</em>
+                        <em>Receipt #: @Model.Order.OrderId</em>
                     </p>
                 </div>
             </div>

@@ -91,7 +91,7 @@ namespace MovieShopAdmin.Controllers
         [HttpPostAttribute]
         [ValidateAntiForgeryTokenAttribute]
         public ActionResult Edit
-        ([Bind(Include = "Id,Title,Year,Price,ImageUrl,TrailerUrl,GenreId")]Movie movie)
+        ([Bind(Include = "MovieId,Title,Year,Price,ImageUrl,TrailerUrl,GenreId")]Movie movie)
         {
             if (ModelState.IsValid)
             {
