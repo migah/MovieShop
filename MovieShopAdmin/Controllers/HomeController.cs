@@ -19,7 +19,6 @@ namespace MovieShopAdmin.Controllers
         // GET: Movies
         public ActionResult Index()
         {
-            var movies = movieManager.Read();
             return View(movieManager.Read());
         }
 
@@ -55,8 +54,7 @@ namespace MovieShopAdmin.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPostAttribute]
         [ValidateAntiForgeryTokenAttribute]
-        public ActionResult Create
-        ([Bind(Include = "Id,Title,Year,Price,ImageUrl,TrailerUrl, Genre")] Movie movie)
+        public ActionResult Create ([Bind(Include = "Id,Title,Year,Price,ImageUrl,TrailerUrl, Genre")] Movie movie)
         {
             if (ModelState.IsValid)
             {
@@ -90,8 +88,7 @@ namespace MovieShopAdmin.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPostAttribute]
         [ValidateAntiForgeryTokenAttribute]
-        public ActionResult Edit
-        ([Bind(Include = "MovieId,Title,Year,Price,ImageUrl,TrailerUrl,GenreId")]Movie movie)
+        public ActionResult Edit ([Bind(Include = "MovieId,Title,Year,Price,ImageUrl,TrailerUrl,GenreId")]Movie movie)
         {
             if (ModelState.IsValid)
             {

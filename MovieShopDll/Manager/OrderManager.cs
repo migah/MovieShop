@@ -45,7 +45,9 @@ namespace MovieShopDll.Manager
         {
             using (var db = new MovieShopContext())
             {
-                return db.Orders.FirstOrDefault(x => x.OrderId == id);
+               // return db.Movies.Include("Genre").FirstOrDefault(x => x.MovieId == id);
+
+                return db.Orders.Include("Customer").FirstOrDefault(x => x.OrderId == id);
             }
         }
 
@@ -53,7 +55,7 @@ namespace MovieShopDll.Manager
         {
             using (var db = new MovieShopContext())
             {
-                return db.Orders.ToList();
+                return db.Orders.Include("Customer").ToList();
             }
         }
 
